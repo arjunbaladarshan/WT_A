@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<input type="text" id="txtName" />
+	<button onclick="checkData()">Click</button>
+
+	<h1 id="answer"></h1>
+	<script type="text/javascript">
+		function checkData(){
+			name = document.getElementById('txtName').value;
+
+			// 23010101006
+			// 23 = joining year
+			// 01 = college DIET
+			// 01 = department
+			// 01 = shift
+			// 006 = 
+
+			// a{0,}
+			pattern = "^a*$";
+			regexp = new RegExp(pattern);
+			if(regexp.test(name)){
+				document.getElementById('answer').innerHTML = "valid";	
+			}
+			else{
+				document.getElementById('answer').innerHTML = "invalid";
+			}
+
+			
+		}
+	</script>
+</body>
+</html>

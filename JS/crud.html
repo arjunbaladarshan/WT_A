@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		*{
+			box-sizing: border-box;
+		}
+		#form{
+			width:50%;
+			float: left;
+		}
+		#result{
+			margin-top: 20px;
+			width: 100%;
+			float: left;
+		}
+		#errMsg{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="form">
+		<input type="text" id="txtID" placeholder="Enter ID" /><br/>
+		<input type="text" id="txtName" /><br/>
+		<input type="text" id="txtRollNo" /><br/>
+		<input type="text" id="txtAvatar" /><br/>
+		<span id="errMsg"></span>
+		<br>
+		<button onclick="addStudent()" id="btn">Add</button>
+	</div>
+
+	<div id="result">
+		asdf
+	</div>
+	
+	<script type="text/javascript">
+		students = [
+  {
+    "createdAt": "2024-06-18T00:44:58.827Z",
+    "name": "Horace Nolan",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/201.jpg",
+    "rollNo": 49122,
+    "id": "1",
+  },
+  {
+    "createdAt": "2024-06-17T19:31:22.399Z",
+    "name": "Lynda Hahn Sr.",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/50.jpg",
+    "rollNo": 82836,
+    "id": "2"
+  },
+  {
+    "createdAt": "2024-06-17T12:51:11.824Z",
+    "name": "Bradford Jakubowski",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/45.jpg",
+    "rollNo": 83415,
+    "id": "3"
+  },
+  {
+    "createdAt": "2024-06-18T00:22:13.137Z",
+    "name": "Kent Paucek",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1066.jpg",
+    "rollNo": 134,
+    "id": "4"
+  },
+  {
+    "createdAt": "2024-06-17T10:42:51.758Z",
+    "name": "Connie Upton",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/154.jpg",
+    "rollNo": 72112,
+    "id": "5"
+  },
+  {
+    "createdAt": "2024-06-17T20:39:16.933Z",
+    "name": "Josefina Toy",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/396.jpg",
+    "rollNo": 54213,
+    "id": "6"
+  },
+  {
+    "createdAt": "2024-06-17T23:08:13.664Z",
+    "name": "Gordon Davis",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/311.jpg",
+    "rollNo": 61535,
+    "id": "7"
+  },
+  {
+    "createdAt": "2024-06-17T09:30:18.921Z",
+    "name": "Ms. Cynthia Abernathy",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/5.jpg",
+    "rollNo": 75871,
+    "id": "8"
+  },
+  {
+    "createdAt": "2024-06-17T16:00:47.527Z",
+    "name": "Ms. Rafael Turcotte",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/15.jpg",
+    "rollNo": 83080,
+    "id": "9"
+  },
+  {
+    "createdAt": "2024-06-17T18:57:32.285Z",
+    "name": "Adrienne Leuschke I",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/129.jpg",
+    "rollNo": 43252,
+    "id": "10"
+  },
+  {
+    "createdAt": "2024-06-17T23:12:18.677Z",
+    "name": "Lora Mertz",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/365.jpg",
+    "rollNo": 7802,
+    "id": "11"
+  },
+  {
+    "createdAt": "2024-06-17T18:21:21.643Z",
+    "name": "Ruby Leannon Jr.",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1230.jpg",
+    "rollNo": 92907,
+    "id": "12"
+  },
+  {
+    "createdAt": "2024-06-17T06:28:17.392Z",
+    "name": "Ollie Dibbert",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/457.jpg",
+    "rollNo": 14324,
+    "id": "13"
+  },
+  {
+    "createdAt": "2024-06-17T08:15:42.102Z",
+    "name": "Cecelia Jast V",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1008.jpg",
+    "rollNo": 38564,
+    "id": "14"
+  },
+  {
+    "createdAt": "2024-06-17T19:28:11.012Z",
+    "name": "Santiago Murphy",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/374.jpg",
+    "rollNo": 56799,
+    "id": "15"
+  },
+  {
+    "createdAt": "2024-06-18T00:38:51.772Z",
+    "name": "Marcella Jacobs",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/509.jpg",
+    "rollNo": 65879,
+    "id": "16"
+  },
+  {
+    "createdAt": "2024-06-17T15:50:55.674Z",
+    "name": "Rodolfo Prohaska",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/791.jpg",
+    "rollNo": 55374,
+    "id": "17"
+  },
+  {
+    "createdAt": "2024-06-17T23:54:36.649Z",
+    "name": "Jeremy Walker IV",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/855.jpg",
+    "rollNo": 32522,
+    "id": "18"
+  },
+  {
+    "createdAt": "2024-06-17T11:57:12.925Z",
+    "name": "Mr. Elmer Mohr",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/285.jpg",
+    "rollNo": 85203,
+    "id": "19"
+  },
+  {
+    "createdAt": "2024-06-18T05:04:58.207Z",
+    "name": "Marlon Russel",
+    "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/406.jpg",
+    "rollNo": 1849,
+    "id": "20"
+  }
+];
+		idToEdit = -1;
+
+		function displayStudent(){
+			temp = document.getElementById("result");
+			tempString = "";
+			tempString += "<table border='1'>";
+			for(i=0;i<students.length;i++){
+				tempString += "<tr>";
+				tempString += "<td>"+students[i].id+"</td>";
+				tempString += "<td>"+students[i].name+"</td>";
+				tempString += "<td>"+students[i].rollNo+"</td>";
+				tempString += "<td><img width='50px' src='"+students[i].avatar+"'/></td>";
+				tempString += "<td><button onclick='deleteStudent("+i+")'>Delete</button></td>";
+				tempString += "<td><button onclick='setStudent("+i+")'>Edit</button></td>";
+				tempString += "</tr>";
+			}
+			tempString += "</table>";
+
+			temp.innerHTML = tempString;
+		}
+
+		displayStudent();
+
+		function setStudent(id){
+			idToEdit = id;
+			document.getElementById('btn').innerHTML = "Edit"
+			document.getElementById('txtName').value = students[id]
+		}
+
+
+		function addStudent(){
+			tempStudent = document.getElementById("txtName");
+			tempObj = {
+				id: document.getElementById('txtID').value,
+				name: document.getElementById('txtName').value,
+				rollNo: document.getElementById('txtRollNo').value,
+				avatar: document.getElementById('txtAvatar').value,
+			}
+
+			if(tempStudent.value==""){
+				//invalid
+				tempStudent.style.border="2px solid red";
+				document.getElementById('errMsg').innerHTML = "Please Enter Name"
+			}
+			else{
+				if(idToEdit>=0){
+					students[idToEdit] = tempObj;
+					idToEdit = -1;
+					document.getElementById('btn').innerHTML = "Add";
+				}
+				else{
+					students.push(tempObj);	
+				}
+				
+				tempStudent.value = ""
+				displayStudent();
+			}
+		}
+
+		function deleteStudent(id){
+			
+				students.splice(id,1);	
+				displayStudent();
+			
+		}
+	</script>
+
+	
+</body>
+</html>
+
+
+
+
+
+
+

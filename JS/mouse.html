@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body style="height: 100vh;">
+	
+	<input type="button" onclick="abc()" value="click">
+
+	<script type="text/javascript">
+		function abc(){
+			url ="https://62d6c51451e6e8f06f12bd5d.mockapi.io/faculties";
+
+			fetch(url).then(()=>{
+				console.log('after api data')
+			});
+
+			console.log('Hello after fetch')
+		}
+	</script>
+</body>
+</html>

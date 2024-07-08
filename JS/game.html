@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		#scorePlace{
+			font-size: 30px;
+			color: blue;
+		}
+	</style>
+</head>
+<body>
+	<h1 id="scorePlace"></h1>
+	<img style="position: absolute" src="CEAVB.jpg" width="70px" id="myImg" onclick="addScore()" />
+
+	<script type="text/javascript">
+		currentScore = 0;
+		function addScore(){
+			currentScore++;
+			changePosition();
+		}
+		function changePosition(){
+			// 1700*900
+			leftPos = parseInt(Math.random()*1700)
+			topPos = parseInt(Math.random()*900)
+			document.getElementById('myImg').style.top =topPos+"px";
+			document.getElementById('myImg').style.left =leftPos+"px";
+
+			document.getElementById('scorePlace').innerHTML = currentScore;
+		}
+
+		setInterval(changePosition,2000)
+	</script>
+</body>
+</html>
