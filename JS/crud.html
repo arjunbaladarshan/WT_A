@@ -246,6 +246,11 @@
 				displayStudent();
 			
 		}
+
+    fetch('https://62d6c51451e6e8f06f12bd5d.mockapi.io/students').then(res=>res.json()).then(res=>{
+      students = res;
+      displayStudent();
+    })
 	</script>
 
 	
