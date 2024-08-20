@@ -9,13 +9,13 @@ const students = [
     {
         id:1083,
         name:'devansh',
-        email:'devansh@darshan.ac.in',
+        email:'kemche@darshan.ac.in',
         age:26
     },
     {
         id:1291,
         name:'deep',
-        email:'deep@darshan.ac.in',
+        email:'majama@darshan.ac.in',
         age:62
     }
 ];
@@ -56,6 +56,25 @@ app.delete('/students/:id',(req,res)=>{
     students.splice(idToEdit,1);
     res.send("Student deleted");
 });
+
+app.get('/students/search/:text',(req,res)=>{
+    const ans = students.filter((stu)=>{
+        if(stu.name.indexOf(req.params.text)>-1 || stu.email.indexOf(req.params.text)>-1){
+            return true;
+        }
+    });
+    res.send(ans);
+});
+
+app.get('/students/:from/:to',(req,res)=>{
+    const {from,to} = req.params;
+    const ans = students.filter((stu)=>{
+        if(stu.age>=from && stu.age<=to){
+            return true;
+        }
+    });
+    res.send(ans);
+})
 
 
 
