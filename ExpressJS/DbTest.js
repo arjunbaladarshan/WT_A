@@ -2,9 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const Student = require('./Student');
-const Faculty = require('./Faculty')
+const Faculty = require('./Faculty');
 
-const connectionString = "mongodb+srv://myuser:MyUser@cluster0.ys0my.mongodb.net/classDB";
+require('dotenv').config();
+
+const connectionString = "mongodb+srv://"+process.env.DBUSER+":"+process.env.DBPASS+"@cluster0.ys0my.mongodb.net/classDB";
 mongoose.connect(connectionString).then(()=>{
     console.log("Connected with CloudDB");
 
@@ -51,11 +53,21 @@ mongoose.connect(connectionString).then(()=>{
         stu.name = req.body.name;
         const ans = await stu.save();
         res.send(ans);
+    });
 
+    app.get('/students/search/:text',async (req,res)=>{
+        const ans = await Student.find({
+            name:{
+                $regex:req.params.text
+            }
+        });
+        res.send(ans);
     })
 
-    app.listen(3000,()=>{
-        console.log("server started @ 3000");
+
+
+    app.listen(process.env.PORT,()=>{
+        console.log("server started @ "+process.env.PORT);
     })
 });
 
